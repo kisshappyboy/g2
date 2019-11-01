@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wcy.gen.mapper.TGradeInfoMapper" >
+
+    <resultMap id="BaseResultMap" type="org.wcy.gen.model.TGradeInfo" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="Pid" property="pid" jdbcType="INTEGER" />
+        <result column="movieId" property="movieid" jdbcType="INTEGER" />
+        <result column="content" property="content" jdbcType="LONGVARBINARY" />
+        <result column="grade" property="grade" jdbcType="VARCHAR" />
+        <result column="time" property="time" jdbcType="TIMESTAMP" />
+        <result column="userId" property="userid" jdbcType="INTEGER" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, Pid, movieId, content, grade, time, userId
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from t_grade_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from t_grade_info
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="org.wcy.gen.model.TGradeInfo" >
+        insert into t_grade_info (id, Pid, movieId, 
+            content, grade, time, 
+            userId)
+        values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{movieid,jdbcType=INTEGER}, 
+            #{content,jdbcType=LONGVARBINARY}, #{grade,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+            #{userid,jdbcType=INTEGER})
+    </insert>
+
+    <insert id="insertSelective" parameterType="org.wcy.gen.model.TGradeInfo" >
+        insert into t_grade_info
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="pid != null" >
+                Pid,
+            </if>
+            <if test="movieid != null" >
+                movieId,
+            </if>
+            <if test="content != null" >
+                content,
+            </if>
+            <if test="grade != null" >
+                grade,
+            </if>
+            <if test="time != null" >
+                time,
+            </if>
+            <if test="userid != null" >
+                userId,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="pid != null" >
+                #{pid,jdbcType=INTEGER},
+            </if>
+            <if test="movieid != null" >
+                #{movieid,jdbcType=INTEGER},
+            </if>
+            <if test="content != null" >
+                #{content,jdbcType=LONGVARBINARY},
+            </if>
+            <if test="grade != null" >
+                #{grade,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null" >
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userid != null" >
+                #{userid,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="org.wcy.gen.model.TGradeInfo" >
+        update t_grade_info
+        <set >
+            <if test="pid != null" >
+                Pid = #{pid,jdbcType=INTEGER},
+            </if>
+            <if test="movieid != null" >
+                movieId = #{movieid,jdbcType=INTEGER},
+            </if>
+            <if test="content != null" >
+                content = #{content,jdbcType=LONGVARBINARY},
+            </if>
+            <if test="grade != null" >
+                grade = #{grade,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null" >
+                time = #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userid != null" >
+                userId = #{userid,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="org.wcy.gen.model.TGradeInfo" >
+        update t_grade_info
+        set Pid = #{pid,jdbcType=INTEGER},
+            movieId = #{movieid,jdbcType=INTEGER},
+            content = #{content,jdbcType=LONGVARBINARY},
+            grade = #{grade,jdbcType=VARCHAR},
+            time = #{time,jdbcType=TIMESTAMP},
+            userId = #{userid,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

@@ -1,7 +1,6 @@
 package com.g2.dao;
 
-
-import com.g2.pojo.TAdviceInfo;
+import org.wcy.gen.model.TAdviceInfo;
 
 public interface TAdviceInfoMapper {
     int deleteByPrimaryKey(Integer id);
